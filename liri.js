@@ -37,30 +37,41 @@ switch(command){
     });
     break;
   case "spotify-this-song":
+    let url = "https://api.spotify.com/v1/search?q="+arg+"&limit=3&type=track";
+    console.log(url);
     if(arg === ""){
-      arg = "The Sign";
+      url = "https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE";
+      spot.request(url)
+        .then(function(response){
+          console.log("/////////");
+          console.log("Artist(s): "+response.artists[0].name);
+          console.log("Song Name: "+response.name);
+          console.log("Link: "+response.href);
+          console.log("Album: "+response.album.name);
+          console.log("/////////");
+        });
     }
-    spot.search({
-      type: "track",
-      limit: 3,
-      query: arg
-    }).then(function(response){
-      for(let i = 0; i<response.tracks.items.length; i++){
-        let artists = "";
-        console.log("/////////");
-        for (let j = 0; j < response.tracks.items[i].artists.length; j++){
-          artists += response.tracks.items[i].artists[j].name;
-          if(j !== response.tracks.items[i].artists.length-1){
-            artists += ", ";
+    else{
+      spot.request(url)
+        .then(function(response){
+        for(let i = 0; i<response.tracks.items.length; i++){
+          let artists = "";
+          console.log("/////////");
+          for (let j = 0; j < response.tracks.items[i].artists.length; j++){
+            artists += response.tracks.items[i].artists[j].name;
+            if(j !== response.tracks.items[i].artists.length-1){
+              artists += ", ";
+            }
           }
+          console.log("Artist(s): "+artists);
+          console.log("Song Name: "+response.tracks.items[i].name);
+          console.log("Link: "+response.tracks.items[i].href);
+          console.log("Album: "+response.tracks.items[i].album.name);
+          console.log("/////////");
         }
-        console.log("Artist(s): "+artists);
-        console.log("Song Name: "+response.tracks.items[i].name);
-        console.log("Link: "+response.tracks.items[i].href);
-        console.log("Album: "+response.tracks.items[i].album.name);
-        console.log("/////////");
-      }
-    });
+      });
+    }
+
     break;
   case "movie-this":
       if(arg === ""){
