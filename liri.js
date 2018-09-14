@@ -45,13 +45,13 @@ function commandCenter(command){
             commandCenter(parsedCom);
           }
           else {
-            write("Hey, what are you trying to pull here!");
+            write("Hey, (┛◉Д◉)┛彡┻━┻ what are you trying to pull here!");
           }
         }
       });
       break;
     default:
-      write("Sorry, :d! I don't know that command.");
+      write("Sorry, (┛✧Д✧))┛彡┻━┻ I don't know that command.");
   }
 }
 function concert(){
@@ -62,11 +62,11 @@ function concert(){
     else {
       let responseDat = JSON.parse(body);
       for(let i = 0; i < responseDat.length; i++){
-        write("/////////");
+        write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
         write("Venue Name: "+responseDat[i].venue.name);
         write("City :"+responseDat[i].venue.city+", "+responseDat[i].venue.country);
         write("Date :"+moment(responseDat[i].datetime).format("MM/DD/YYYY"));
-        write("/////////");
+        write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
       }
     }
   });
@@ -78,12 +78,12 @@ function spotThis(){
     url = "https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE";
     spot.request(url)
       .then(function(response){
-        write("/////////");
+        write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
         write("Artist(s): "+response.artists[0].name);
         write("Song Name: "+response.name);
         write("Link: "+response.href);
         write("Album: "+response.album.name);
-        write("/////////");
+        write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
       });
   }
   else{
@@ -91,7 +91,7 @@ function spotThis(){
       .then(function(response){
       for(let i = 0; i<response.tracks.items.length; i++){
         let artists = "";
-        write("/////////");
+        write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
         for (let j = 0; j < response.tracks.items[i].artists.length; j++){
           artists += response.tracks.items[i].artists[j].name;
           if(j !== response.tracks.items[i].artists.length-1){
@@ -107,7 +107,7 @@ function spotThis(){
           write("Link: "+response.tracks.items[i].preview_url);
         }
         write("Album: "+response.tracks.items[i].album.name);
-        write("/////////");
+        write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
       }
     });
   }
@@ -124,7 +124,7 @@ function movie(){
     }
     else {
       let movieData = JSON.parse(body);
-      write("/////////");
+      write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
       write("Title: "+movieData.Title);
       write("Year: "+movieData.Year);
       write("IMDB Rating: "+movieData.imdbRating);
@@ -137,7 +137,7 @@ function movie(){
       write("Country: "+movieData.Country);
       write("Plot: "+movieData.Plot);
       write("Actors: "+movieData.Actors);
-      write("/////////");
+      write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
     }
   });
 }
