@@ -1,23 +1,20 @@
-# liri-node-app
-We'll be making a LIRI.
+# LIRI
+This is like SIRI, but LIRI instead.
 
-# Opening the Page
-You can access the page with the following [link](https://majorazero.github.io/gifAtorium/).
+# Using the App
+- cd to the file and LIRI will follow 4 commands
+- `node liri.js concert-this <entry>` will give you a list of concerts based on the artist of your choosing.
+- `node liri.js spotify-this-song <entry>` will give you a brief of up to three song you're inquiring about.
+- `node liri.js movie-this <entry>` will give you a brief about the movie you're inquiring about.
+- `node liri.js do-what-it-says` will run whatever code is written in the random.txt
 
-# App Basics
-- You can click on any of the topics in the topics bar to load 10 gif's.
-- If you search for a new topic, it will be included in the topic bar.
-- Your searches will be saved between sessions.
-- If you click "More", you can add 10 more GIF's.
+All code are console logged and written in the log.txt file.
 
 # Built With
-- HTML
-- CSS
-- [Bootstrap](https://getbootstrap.com/)
-- Javascript
-- [jQuery](https://jquery.com/)
-- Git (For deployment.)
-- [Giphy](https://developers.giphy.com/)
+- Node.js
+- Spotify API
+- OMDB API
+- Bands In Town APO
 
 # Version
 - 1.0.0
