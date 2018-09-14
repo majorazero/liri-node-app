@@ -1,17 +1,19 @@
-spotify-this-song 
+spotify-this-song radioactive
 /////////
-Artist(s): Ace of Base
-Song Name: The Sign
-Link: https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE
-Album: The Sign (US Album) [Remastered]
+Artist(s): Imagine Dragons
+Song Name: Radioactive
+Link: Oops no URL. Sorry, Spotify sucks!
+Album: Night Visions
 /////////
-movie-this the matrix
 /////////
-Title: The Matrix
-Year: 1999
-IMDB Rating: 8.7
-Rotten Tomatoe Rating: 87%
-Country: USA
-Plot: A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.
-Actors: Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving
+Artist(s): Imagine Dragons, Kendrick Lamar
+Song Name: Radioactive
+Link: Oops no URL. Sorry, Spotify sucks!
+Album: Radioactive
+/////////
+/////////
+Artist(s): Pentatonix, Lindsey Stirling
+Song Name: Radioactive
+Link: https://p.scdn.co/mp3-preview/9d620430403c2e93fdc5f6ed52e73f347c44a61c?cid=f3e3c8cca45c480bb4db690f8425bc28
+Album: Radioactive
 /////////

@@ -100,7 +100,12 @@ function spotThis(){
         }
         write("Artist(s): "+artists);
         write("Song Name: "+response.tracks.items[i].name);
-        write("Link: "+response.tracks.items[i].href);
+        if(response.tracks.items[i].preview_url === null){
+          write("Link: Oops no URL. Sorry, Spotify sucks!");
+        }
+        else {
+          write("Link: "+response.tracks.items[i].preview_url);
+        }
         write("Album: "+response.tracks.items[i].album.name);
         write("/////////");
       }
