@@ -18,7 +18,7 @@ for(let i = 3; i < process.argv.length; i++){
   }
 }
 
-write(command+" "+arg.replace("+"," "));
+write(command+" "+arg.replace("+"," ")+" "+randomFace());
 commandCenter(command);
 
 function commandCenter(command){
@@ -76,6 +76,7 @@ function spotThis(){
   let url = "https://api.spotify.com/v1/search?q="+arg+"&limit=3&type=track";
   if(arg === ""){
     url = "https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE";
+    console.log("Pulling data from spotify... ヽ༼ °⊱,° ༽ﾉ");
     spot.request(url)
       .then(function(response){
         write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
@@ -87,6 +88,7 @@ function spotThis(){
       });
   }
   else{
+    console.log("Pulling data from spotify... ヽ༼ °⊱,° ༽ﾉ");
     spot.request(url)
       .then(function(response){
       for(let i = 0; i<response.tracks.items.length; i++){
@@ -149,4 +151,22 @@ function write(text){
       console.log(err);
     }
   });
+}
+
+function randomFace(){
+  let randomNum = Math.floor(Math.random()*4);
+  switch(randomNum) {
+    case 0:
+      return "(´∀｀)";
+      break;
+    case 1:
+      return "ᕦ(ಠ_ಠ)ᕤ";
+      break;
+    case 2:
+      return "ᕕ( ⌓̈ )ᕗ";
+      break;
+    case 3:
+      return "ヽ༼◉ل͜◉༽ﾉ";
+      break;
+  }
 }
