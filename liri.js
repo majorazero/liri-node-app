@@ -17,6 +17,8 @@ for(let i = 3; i < process.argv.length; i++){
     arg += "+";
   }
 }
+
+write(command+" "+arg.replace("+"," "));
 commandCenter(command);
 
 function commandCenter(command){
@@ -33,7 +35,7 @@ function commandCenter(command){
     case "do-what-it-says":
       fs.readFile("./random.txt","utf8",function(error,data){
         if(error){
-          console.log(error);
+          write(error);
         }
         else {
           let parsedCom = data.substring(0,data.indexOf(" "));
@@ -43,28 +45,28 @@ function commandCenter(command){
             commandCenter(parsedCom);
           }
           else {
-            console.log("Hey, what are you trying to pull here!");
+            write("Hey, what are you trying to pull here!");
           }
         }
       });
       break;
     default:
-      console.log("Sorry, :d! I don't know that command.");
+      write("Sorry, :d! I don't know that command.");
   }
 }
 function concert(){
   request("https://rest.bandsintown.com/artists/"+arg+"/events?app_id=codingbootcamp",function(error,response,body){
     if(error){
-      console.log(error);
+      write(error);
     }
     else {
       let responseDat = JSON.parse(body);
       for(let i = 0; i < responseDat.length; i++){
-        console.log("/////////");
-        console.log("Venue Name: "+responseDat[i].venue.name);
-        console.log("City :"+responseDat[i].venue.city+", "+responseDat[i].venue.country);
-        console.log("Date :"+moment(responseDat[i].datetime).format("MM/DD/YYYY"));
-        console.log("/////////");
+        write("/////////");
+        write("Venue Name: "+responseDat[i].venue.name);
+        write("City :"+responseDat[i].venue.city+", "+responseDat[i].venue.country);
+        write("Date :"+moment(responseDat[i].datetime).format("MM/DD/YYYY"));
+        write("/////////");
       }
     }
   });
@@ -76,12 +78,12 @@ function spotThis(){
     url = "https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE";
     spot.request(url)
       .then(function(response){
-        console.log("/////////");
-        console.log("Artist(s): "+response.artists[0].name);
-        console.log("Song Name: "+response.name);
-        console.log("Link: "+response.href);
-        console.log("Album: "+response.album.name);
-        console.log("/////////");
+        write("/////////");
+        write("Artist(s): "+response.artists[0].name);
+        write("Song Name: "+response.name);
+        write("Link: "+response.href);
+        write("Album: "+response.album.name);
+        write("/////////");
       });
   }
   else{
@@ -89,18 +91,18 @@ function spotThis(){
       .then(function(response){
       for(let i = 0; i<response.tracks.items.length; i++){
         let artists = "";
-        console.log("/////////");
+        write("/////////");
         for (let j = 0; j < response.tracks.items[i].artists.length; j++){
           artists += response.tracks.items[i].artists[j].name;
           if(j !== response.tracks.items[i].artists.length-1){
             artists += ", ";
           }
         }
-        console.log("Artist(s): "+artists);
-        console.log("Song Name: "+response.tracks.items[i].name);
-        console.log("Link: "+response.tracks.items[i].href);
-        console.log("Album: "+response.tracks.items[i].album.name);
-        console.log("/////////");
+        write("Artist(s): "+artists);
+        write("Song Name: "+response.tracks.items[i].name);
+        write("Link: "+response.tracks.items[i].href);
+        write("Album: "+response.tracks.items[i].album.name);
+        write("/////////");
       }
     });
   }
@@ -113,24 +115,33 @@ function movie(){
   request("http://www.omdbapi.com/?t="+arg+"&y=&plot=short&apikey=trilogy",function(error,response,body){
     let rotScore = "N/A";
     if (error){
-      console.log(error);
+      write(error);
     }
     else {
       let movieData = JSON.parse(body);
-      console.log("/////////");
-      console.log("Title: "+movieData.Title);
-      console.log("Year: "+movieData.Year);
-      console.log("IMDB Rating: "+movieData.imdbRating);
+      write("/////////");
+      write("Title: "+movieData.Title);
+      write("Year: "+movieData.Year);
+      write("IMDB Rating: "+movieData.imdbRating);
       for(let i = 0; i < movieData.Ratings.length; i++){
         if(movieData.Ratings[i].Source === "Rotten Tomatoes"){
           rotScore = movieData.Ratings[i].Value;
         }
       }
-      console.log("Rotten Tomatoe Rating: "+rotScore);
-      console.log("Country: "+movieData.Country);
-      console.log("Plot: "+movieData.Plot);
-      console.log("Actors: "+movieData.Actors);
-      console.log("/////////");
+      write("Rotten Tomatoe Rating: "+rotScore);
+      write("Country: "+movieData.Country);
+      write("Plot: "+movieData.Plot);
+      write("Actors: "+movieData.Actors);
+      write("/////////");
+    }
+  });
+}
+
+function write(text){
+  console.log(text);
+  fs.appendFile("./log.txt",text+"\n",function(err,data){
+    if(err){
+      console.log(err);
     }
   });
 }

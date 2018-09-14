@@ -1,0 +1,17 @@
+spotify-this-song 
+/////////
+Artist(s): Ace of Base
+Song Name: The Sign
+Link: https://api.spotify.com/v1/tracks/0hrBpAOgrt8RXigk83LLNE
+Album: The Sign (US Album) [Remastered]
+/////////
+movie-this the matrix
+/////////
+Title: The Matrix
+Year: 1999
+IMDB Rating: 8.7
+Rotten Tomatoe Rating: 87%
+Country: USA
+Plot: A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.
+Actors: Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving
+/////////
