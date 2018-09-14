@@ -1,9 +1,15 @@
-let key = require("./key.js");
 let dotenv = require("dotenv").config();
+let key = require("./key.js");
 let request = require("request");
 let moment = require("moment");
 let command = process.argv[2];
 let arg = "";
+let Spotify = require("node-spotify-api");
+let spot = new Spotify({
+  id: key.spotify.id,
+  secret: key.spotify.secret
+});
+
 
 for(let i = 3; i < process.argv.length; i++){
   arg += process.argv[i];
@@ -31,9 +37,33 @@ switch(command){
     });
     break;
   case "spotify-this-song":
+    if(arg === ""){
+      arg = "The Sign";
+    }
+    spot.search({
+      type: "track",
+      limit: 3,
+      query: arg
+    }).then(function(response){
+      for(let i = 0; i<response.tracks.items.length; i++){
+        let artists = "";
+        console.log("/////////");
+        for (let j = 0; j < response.tracks.items[i].artists.length; j++){
+          artists += response.tracks.items[i].artists[j].name;
+          if(j !== response.tracks.items[i].artists.length-1){
+            artists += ", ";
+          }
+        }
+        console.log("Artist(s): "+artists);
+        console.log("Song Name: "+response.tracks.items[i].name);
+        console.log("Link: "+response.tracks.items[i].href);
+        console.log("Album: "+response.tracks.items[i].album.name);
+        console.log("/////////");
+      }
+    });
     break;
   case "movie-this":
-      if(process.argv[3] === undefined){
+      if(arg === ""){
         arg = "Mr. Nobody";
       }
       request("http://www.omdbapi.com/?t="+arg+"&y=&plot=short&apikey=trilogy",function(error,response,body){
