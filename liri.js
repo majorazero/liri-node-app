@@ -55,21 +55,26 @@ function commandCenter(command){
   }
 }
 function concert(){
-  request("https://rest.bandsintown.com/artists/"+arg+"/events?app_id=codingbootcamp",function(error,response,body){
-    if(error){
-      write(error);
-    }
-    else {
-      let responseDat = JSON.parse(body);
-      for(let i = 0; i < responseDat.length; i++){
-        write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
-        write("Venue Name: "+responseDat[i].venue.name);
-        write("City :"+responseDat[i].venue.city+", "+responseDat[i].venue.country);
-        write("Date :"+moment(responseDat[i].datetime).format("MM/DD/YYYY"));
-        write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
+  if(arg === ""){
+    console.log("You didn't enter an artist! ヾ(*｀ｪ´*)ﾉ");
+  }
+  else {
+    request("https://rest.bandsintown.com/artists/"+arg+"/events?app_id=codingbootcamp",function(error,response,body){
+      if(error){
+        write(error);
       }
-    }
-  });
+      else {
+        let responseDat = JSON.parse(body);
+        for(let i = 0; i < responseDat.length; i++){
+          write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
+          write("Venue Name: "+responseDat[i].venue.name);
+          write("City :"+responseDat[i].venue.city+", "+responseDat[i].venue.country);
+          write("Date :"+moment(responseDat[i].datetime).format("MM/DD/YYYY"));
+          write("━━━ヽ(ﾟ∀ﾟ)ﾉ━( ﾟ∀)ﾉ━(　　ﾟ)ﾉ━ヽ(　　)ﾉ━ヽ(ﾟ　　)━ヽ(∀ﾟ )ﾉ━ヽ(ﾟ∀ﾟ)ﾉ ");
+        }
+      }
+    });
+  }
 }
 
 function spotThis(){
